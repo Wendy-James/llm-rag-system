@@ -1,0 +1,2 @@
+"""Hybrid RAG retrieval lab."""
+

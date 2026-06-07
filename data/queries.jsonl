@@ -1,0 +1,6 @@
+{"id":"q1","query":"Why use hybrid search in RAG?","relevant_ids":["doc_rag_001","doc_faiss_001"]}
+{"id":"q2","query":"How does reranking improve retrieval quality?","relevant_ids":["doc_rag_002","doc_eval_001"]}
+{"id":"q3","query":"What is query rewrite for retrieval?","relevant_ids":["doc_rag_003","doc_rag_001"]}
+{"id":"q4","query":"Which metrics evaluate retrieved document ranking?","relevant_ids":["doc_eval_001"]}
+{"id":"q5","query":"How are CTR models evaluated?","relevant_ids":["doc_recsys_001"]}
+

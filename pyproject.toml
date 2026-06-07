@@ -1,0 +1,16 @@
+[project]
+name = "hybrid-rag-lab"
+version = "0.1.0"
+description = "A reproducible hybrid RAG retrieval lab with BM25, dense hashing, RRF fusion, reranking, query rewrite, and evaluation."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Wendy-James" }]
+dependencies = []
+
+[project.scripts]
+hybrid-rag = "hybrid_rag_lab.cli:main"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
