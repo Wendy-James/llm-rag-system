@@ -20,11 +20,20 @@ Single-route dense retrieval misses exact role names, abbreviations, and rare te
 
 ## Quick Start
 
+Recommended:
+
+```bash
+make all
+```
+
+Equivalent manual commands:
+
 ```bash
 python -m pip install -e .
 PYTHONPATH=src python scripts/run_experiment.py
 python -m hybrid_rag_lab.cli search --query "How should I explain hard negative mining in an ecommerce retrieval project?"
 python -m hybrid_rag_lab.cli evaluate --k 3
+PYTHONPATH=src python -m pytest -q
 ```
 
 The default command runs on a compact public subset so the repository is easy to inspect. The resume-scale protocol and results are documented in `experiments/retrieval_metrics.csv`, `experiments/chunk_size_ablation.csv`, and `docs/data_schema.md`.
@@ -59,6 +68,7 @@ hybrid-rag-lab/
     sample_queries.jsonl
   docs/
     data_schema.md
+    dev_log.md
     architecture.md
     algorithm.md
     experiments.md
@@ -73,6 +83,9 @@ hybrid-rag-lab/
     error_analysis.csv
   scripts/
     run_experiment.py
+  tests/
+    test_pipeline.py
+    test_schema_and_labels.py
   src/hybrid_rag_lab/
     bm25.py
     dense.py
@@ -97,6 +110,7 @@ This is a supporting project for retrieval evaluation ability. It should be desc
 - Why RRF is used before reranking.
 - Why unsupported-answer rate is tracked instead of only reporting retrieval recall.
 - What the public repo contains versus what the full local evaluation protocol contains.
+- Why this June 2026 public evidence repo uses anonymized/pseudo samples and does not claim production ownership.
 
 ## Resume Summary
 

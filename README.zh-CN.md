@@ -16,14 +16,24 @@ BM25 + Dense Retrieval + Reranker · Faiss Vector Index · Chunk Ablation · Rec
 
 ## 快速运行
 
+推荐：
+
+```bash
+make all
+```
+
+等价手动命令：
+
 ```bash
 python -m pip install -e .
 PYTHONPATH=src python scripts/run_experiment.py
 python -m hybrid_rag_lab.cli search --query "How should I explain hard negative mining in an ecommerce retrieval project?"
 python -m hybrid_rag_lab.cli evaluate --k 3
+PYTHONPATH=src python -m pytest -q
 ```
 
 默认脚本使用公开小样本做 smoke test；简历规模的评测口径和结果记录在 `docs/data_schema.md`、`experiments/retrieval_metrics.csv`、`experiments/chunk_size_ablation.csv` 和 `badcases/error_analysis.csv`。
+`docs/dev_log.md` 说明该仓库是 2026 年 6 月整理的公开证据版，使用脱敏/伪数据复现检索评测链路。
 
 ## 当前实验记录
 
