@@ -11,7 +11,7 @@ The project focus is retrieval quality and evaluation discipline, not API wrappi
 - **Scenario:** build a job-search knowledge base for JD analysis, project evidence lookup, interview question preparation, and resume-bullet grounding.
 - **Data protocol:** 300 anonymized documents, about 6000 chunks after cleaning and overlap chunking, and 180 query-evidence pairs for offline regression.
 - **Retrieval stack:** BM25 sparse retrieval, dense embedding retrieval, Faiss vector index, Reciprocal Rank Fusion, and lightweight reranking.
-- **Evaluation:** Recall@5, MRR, citation hit rate, unsupported-answer rate, chunk-size ablation, and error analysis.
+- **Evaluation:** Recall@5, MRR, citation hit rate, unsupported-answer rate, chunk-size ablation, and 10-case error analysis.
 - **Public evidence:** this repo contains pseudo/anonymized samples, schemas, experiment tables, runnable local scripts, and badcase examples.
 
 ## Why This Project

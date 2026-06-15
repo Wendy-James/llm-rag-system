@@ -1,4 +1,5 @@
 import json
+import csv
 from pathlib import Path
 
 
@@ -24,3 +25,12 @@ def test_retrieval_metrics_document_reranker_lift() -> None:
     assert "bm25_dense_reranker" in csv_text
     assert "0.71" in csv_text
     assert "0.77" in csv_text
+
+
+def test_error_analysis_has_enough_anonymized_badcases() -> None:
+    rows = list(csv.DictReader((ROOT / "badcases" / "error_analysis.csv").open(encoding="utf-8")))
+    error_types = {row["error_type"] for row in rows}
+
+    assert len(rows) >= 10
+    assert "wrong_document_retrieved" in error_types
+    assert "unsupported_answer_risk" in error_types
