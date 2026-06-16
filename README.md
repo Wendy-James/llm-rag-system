@@ -2,11 +2,45 @@
 
 BM25 + Dense Retrieval + Reranker · Faiss Vector Index · Chunk Ablation · Recall@5/MRR/Citation Hit Rate
 
+## Background
+
 This repository is the GitHub evidence-chain project for a resume-side RAG retrieval evaluation system. It uses anonymized and pseudo job-description, project-note, and interview-review documents to document a **300-doc / 6000-chunk / 180-query** evaluation protocol while keeping the public repository runnable on a small smoke-test subset.
 
 The project focus is retrieval quality and evaluation discipline, not API wrapping or chatbot UI.
 
-## Quick Start
+## Dataset Boundary
+
+This repository uses pseudo/anonymized data to reproduce the offline evaluation pipeline. It does not contain company data or online production code.
+
+The public subset uses anonymized JD, project-note, and interview-review documents. It is a retrieval-evaluation supplement for recommendation/search interviews, not a large-model training project.
+
+## Method
+
+- build chunked job/project/interview documents with query-evidence labels
+- compare BM25, dense retrieval, BM25+dense RRF, and lightweight reranking
+- use Faiss-style vector indexing notes and CPU-friendly local evaluation scripts
+- track Recall@5, MRR, citation hit rate, unsupported-answer rate, and no-answer control
+
+## Metrics
+
+![metrics snapshot](assets/metrics_snapshot.svg)
+
+| Run | Retriever | Reranker | Recall@5 | MRR | Citation Hit | Unsupported |
+|---|---|---|---:|---:|---:|---:|
+| `bm25_only` | BM25 | none | 0.64 | 0.55 | 0.60 | 0.18 |
+| `dense_faiss` | dense embedding | none | 0.69 | 0.59 | 0.65 | 0.15 |
+| `bm25_dense_rrf` | BM25 + dense | RRF | 0.71 | 0.62 | 0.68 | 0.13 |
+| `bm25_dense_reranker` | BM25 + dense | cross-encoder-lite | 0.77 | 0.68 | 0.74 | 0.09 |
+
+## Ablation
+
+The ablation table is available at [`ablation.csv`](ablation.csv) and [`experiments/chunk_size_ablation.csv`](experiments/chunk_size_ablation.csv). It compares chunk size, overlap, Recall@5, MRR, citation hit rate, and unsupported-answer rate.
+
+## Badcases
+
+Badcase records are available at [`badcases.csv`](badcases.csv) and [`badcases/error_analysis.csv`](badcases/error_analysis.csv), covering retrieved-but-not-cited evidence, wrong-document retrieval, and unsupported answers.
+
+## How to Run
 
 Recommended:
 
@@ -26,18 +60,11 @@ PYTHONPATH=src python -m pytest -q
 
 The default command runs on a compact public subset so the repository is easy to inspect. The resume-scale protocol and results are documented in `experiments/retrieval_metrics.csv`, `experiments/chunk_size_ablation.csv`, and `docs/data_schema.md`.
 
-## Result Snapshot
+## What This Repo Proves
 
-![metrics snapshot](assets/metrics_snapshot.svg)
+This repo proves a retrieval-evaluation workflow: data schema, chunking, BM25+dense retrieval, Faiss-style indexing, reranking, metrics, chunk-size ablation, and badcase analysis are documented and runnable on a public pseudo subset.
 
-| Run | Retriever | Reranker | Recall@5 | MRR | Citation Hit | Unsupported |
-|---|---|---|---:|---:|---:|---:|
-| `bm25_only` | BM25 | none | 0.64 | 0.55 | 0.60 | 0.18 |
-| `dense_faiss` | dense embedding | none | 0.69 | 0.59 | 0.65 | 0.15 |
-| `bm25_dense_rrf` | BM25 + dense | RRF | 0.71 | 0.62 | 0.68 | 0.13 |
-| `bm25_dense_reranker` | BM25 + dense | cross-encoder-lite | 0.77 | 0.68 | 0.74 | 0.09 |
-
-## Boundary
+## What It Does Not Claim
 
 - This public repo is a runnable pseudo/anonymized version, not a production RAG service.
 - It does not contain private company documents, personal interview records, or internal resume data.
