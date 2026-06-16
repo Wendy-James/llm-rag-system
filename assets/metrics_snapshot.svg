@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="360" viewBox="0 0 920 360" role="img" aria-label="RAG retrieval evaluation metrics snapshot">
+  <rect width="920" height="360" fill="#f8fbff"/>
+  <rect x="24" y="24" width="872" height="312" rx="14" fill="#ffffff" stroke="#d8e6f5"/>
+  <text x="48" y="62" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#17324d">Job Knowledge Base RAG - Retrieval Metrics Snapshot</text>
+  <text x="48" y="90" font-family="Arial, sans-serif" font-size="14" fill="#5c6f82">BM25 · Dense Retrieval · RRF · Reranker · pseudo/anonymized JD and interview notes</text>
+
+  <line x1="82" y1="278" x2="850" y2="278" stroke="#c9d8e8"/>
+  <line x1="82" y1="128" x2="82" y2="278" stroke="#c9d8e8"/>
+
+  <text x="108" y="304" font-family="Arial, sans-serif" font-size="13" fill="#41566b">BM25</text>
+  <text x="292" y="304" font-family="Arial, sans-serif" font-size="13" fill="#41566b">Dense</text>
+  <text x="458" y="304" font-family="Arial, sans-serif" font-size="13" fill="#41566b">BM25+Dense</text>
+  <text x="678" y="304" font-family="Arial, sans-serif" font-size="13" fill="#41566b">+ Reranker</text>
+
+  <rect x="112" y="196" width="64" height="82" rx="6" fill="#9bc5ff"/>
+  <rect x="304" y="184" width="64" height="94" rx="6" fill="#71a9f7"/>
+  <rect x="500" y="178" width="64" height="100" rx="6" fill="#4f8de5"/>
+  <rect x="704" y="154" width="64" height="124" rx="6" fill="#2066c2"/>
+
+  <text x="116" y="186" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#17324d">0.64</text>
+  <text x="308" y="174" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#17324d">0.69</text>
+  <text x="504" y="168" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#17324d">0.71</text>
+  <text x="708" y="144" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#17324d">0.77</text>
+
+  <circle cx="144" cy="232" r="5" fill="#19a974"/>
+  <circle cx="336" cy="220" r="5" fill="#19a974"/>
+  <circle cx="532" cy="208" r="5" fill="#19a974"/>
+  <circle cx="736" cy="190" r="5" fill="#19a974"/>
+  <polyline points="144,232 336,220 532,208 736,190" fill="none" stroke="#19a974" stroke-width="3"/>
+  <text x="778" y="194" font-family="Arial, sans-serif" font-size="13" fill="#147a4b">MRR 0.55 -> 0.68</text>
+
+  <rect x="48" y="116" width="166" height="34" rx="17" fill="#eef5ff" stroke="#cfe0f4"/>
+  <text x="64" y="138" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2066c2">Recall@5 0.64 -> 0.77</text>
+  <rect x="228" y="116" width="150" height="34" rx="17" fill="#eefbf5" stroke="#cceedd"/>
+  <text x="244" y="138" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#147a4b">MRR 0.55 -> 0.68</text>
+  <rect x="392" y="116" width="208" height="34" rx="17" fill="#fff7e8" stroke="#f0ddb8"/>
+  <text x="408" y="138" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#8a5f13">Citation hit 0.60 -> 0.74</text>
+  <rect x="614" y="116" width="214" height="34" rx="17" fill="#fff1f2" stroke="#f3c8cf"/>
+  <text x="630" y="138" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#a23a45">Unsupported 0.18 -> 0.09</text>
+</svg>

@@ -6,22 +6,6 @@ This repository is the GitHub evidence-chain project for a resume-side RAG retri
 
 The project focus is retrieval quality and evaluation discipline, not API wrapping or chatbot UI.
 
-## Evidence Pack
-
-For interview review, see [`evidence_pack/`](evidence_pack/). It contains project overview, data schema, metric definitions, experiment CSV, ablation CSV, badcases, run commands, boundary statement, and whiteboard notes.
-
-## Resume-Aligned Scope
-
-- **Scenario:** build a job-search knowledge base for JD analysis, project evidence lookup, interview question preparation, and resume-bullet grounding.
-- **Data protocol:** 300 anonymized documents, about 6000 chunks after cleaning and overlap chunking, and 180 query-evidence pairs for offline regression.
-- **Retrieval stack:** BM25 sparse retrieval, dense embedding retrieval, Faiss vector index, Reciprocal Rank Fusion, and lightweight reranking.
-- **Evaluation:** Recall@5, MRR, citation hit rate, unsupported-answer rate, chunk-size ablation, and 10-case error analysis.
-- **Public evidence:** this repo contains pseudo/anonymized samples, schemas, experiment tables, runnable local scripts, and badcase examples.
-
-## Why This Project
-
-Single-route dense retrieval misses exact role names, abbreviations, and rare technical terms such as `Two-Tower`, `Faiss`, `Recall@50`, or `SKU`. Pure BM25 catches keywords but misses paraphrases such as "evidence grounding" versus "citation hit". A practical RAG project needs hybrid retrieval, reranking, and stable offline metrics before adding answer generation.
-
 ## Quick Start
 
 Recommended:
@@ -41,6 +25,40 @@ PYTHONPATH=src python -m pytest -q
 ```
 
 The default command runs on a compact public subset so the repository is easy to inspect. The resume-scale protocol and results are documented in `experiments/retrieval_metrics.csv`, `experiments/chunk_size_ablation.csv`, and `docs/data_schema.md`.
+
+## Result Snapshot
+
+![metrics snapshot](assets/metrics_snapshot.svg)
+
+| Run | Retriever | Reranker | Recall@5 | MRR | Citation Hit | Unsupported |
+|---|---|---|---:|---:|---:|---:|
+| `bm25_only` | BM25 | none | 0.64 | 0.55 | 0.60 | 0.18 |
+| `dense_faiss` | dense embedding | none | 0.69 | 0.59 | 0.65 | 0.15 |
+| `bm25_dense_rrf` | BM25 + dense | RRF | 0.71 | 0.62 | 0.68 | 0.13 |
+| `bm25_dense_reranker` | BM25 + dense | cross-encoder-lite | 0.77 | 0.68 | 0.74 | 0.09 |
+
+## Boundary
+
+- This public repo is a runnable pseudo/anonymized version, not a production RAG service.
+- It does not contain private company documents, personal interview records, or internal resume data.
+- It does not claim large-model training, online deployment, or business A/B lift.
+- It is meant to show retrieval schema, chunking, BM25 + dense retrieval, Faiss-style indexing, reranking, metrics, and badcase analysis.
+
+## Evidence Pack
+
+For interview review, see [`evidence_pack/`](evidence_pack/). It contains project overview, data schema, metric definitions, experiment CSV, ablation CSV, badcases, run commands, boundary statement, and whiteboard notes.
+
+## Resume-Aligned Scope
+
+- **Scenario:** build a job-search knowledge base for JD analysis, project evidence lookup, interview question preparation, and resume-bullet grounding.
+- **Data protocol:** 300 anonymized documents, about 6000 chunks after cleaning and overlap chunking, and 180 query-evidence pairs for offline regression.
+- **Retrieval stack:** BM25 sparse retrieval, dense embedding retrieval, Faiss vector index, Reciprocal Rank Fusion, and lightweight reranking.
+- **Evaluation:** Recall@5, MRR, citation hit rate, unsupported-answer rate, chunk-size ablation, and 10-case error analysis.
+- **Public evidence:** this repo contains pseudo/anonymized samples, schemas, experiment tables, runnable local scripts, and badcase examples.
+
+## Why This Project
+
+Single-route dense retrieval misses exact role names, abbreviations, and rare technical terms such as `Two-Tower`, `Faiss`, `Recall@50`, or `SKU`. Pure BM25 catches keywords but misses paraphrases such as "evidence grounding" versus "citation hit". A practical RAG project needs hybrid retrieval, reranking, and stable offline metrics before adding answer generation.
 
 ## Current Evidence Tables
 
