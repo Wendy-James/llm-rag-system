@@ -1,0 +1,7 @@
+ablation_id,change,expected_effect,observed_result,risk_or_failure_case
+ab_01_bm25_only,keyword retrieval only,good exact skill/company matching,weak on semantic paraphrases,misses synonym queries
+ab_02_dense_only,dense retrieval only,better semantic matching,misses exact constraints,may retrieve broad but vague chunks
+ab_03_rrf,bm25+dense fusion,combine exact and semantic signals,Recall@5 improves,requires weight/rank tuning
+ab_04_reranker,add reranker,improve evidence order,MRR improves,adds latency
+ab_05_chunk_size,compare chunk sizes,balance recall and precision,medium chunks best,too large noisy too small loses context
+ab_06_no_answer,add threshold for weak evidence,reduce unsupported answers,no-answer errors lower,may refuse answerable edge cases

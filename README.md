@@ -6,6 +6,10 @@ This repository is the GitHub evidence-chain project for a resume-side RAG retri
 
 The project focus is retrieval quality and evaluation discipline, not API wrapping or chatbot UI.
 
+## Evidence Pack
+
+For interview review, see [`evidence_pack/`](evidence_pack/). It contains project overview, data schema, metric definitions, experiment CSV, ablation CSV, badcases, run commands, boundary statement, and whiteboard notes.
+
 ## Resume-Aligned Scope
 
 - **Scenario:** build a job-search knowledge base for JD analysis, project evidence lookup, interview question preparation, and resume-bullet grounding.

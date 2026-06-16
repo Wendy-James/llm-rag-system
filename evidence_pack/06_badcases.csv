@@ -1,0 +1,7 @@
+case_id,bucket,symptom,likely_reason,next_check
+rag_bad_001,chunk_too_large,top chunk contains evidence plus noise,chunk size too broad,try smaller chunk
+rag_bad_002,chunk_too_small,evidence split across chunks,context lost,add overlap or parent doc citation
+rag_bad_003,bm25_miss,query uses paraphrase,no exact token overlap,use dense retrieval or query rewrite
+rag_bad_004,dense_drift,semantic result is broad but not exact,dense embedding overgeneralizes,add BM25/RRF or reranker
+rag_bad_005,citation_error,answer cites wrong chunk,reranker order or citation mapping issue,verify chunk ids
+rag_bad_006,no_answer_error,answers without evidence,threshold too loose,tighten evidence score threshold
